@@ -1,0 +1,56 @@
+<style>
+	.avatar-player {
+    	display: flex;
+    	height: 22px;
+    	width: 22px;
+    	text-align: center;
+	}
+</style>
+<div class="form-block clans-page">
+	<div class="block-header">
+		<div class="block-name"><?php echo $this->lng_m['mod_name']; ?></div>
+	</div>
+	<div class="block-line"></div>
+	<div class="block-content">
+		<ul class="nav nav-pills nav-justified">
+			<li class="active"><a href="#clans" data-toggle="tab"><?php echo $this->lng_m['tabs_clans']; ?></a></li>
+			<li><a href="#players" data-toggle="tab"><?php echo $this->lng_m['tabs_players']; ?></a></li>
+		</ul>
+		<div class="tabbable">
+			<div class="tab-content">
+				<div class="tab-pane active" id="clans">
+                    <table class="table clans">
+                        <thead class="clans-header">
+                            <tr>
+                                <th>#</th>
+                                <th><?php echo $this->lng_m['teg']; ?></th>
+                                <th><?php echo $this->lng_m['name']; ?></th>
+								<th><?php echo $this->lng_m['members']; ?></th>
+                                <th><?php echo $this->lng_m['balance']; ?></th>
+                            </tr>
+                        </thead>
+                        <?php echo $data['TOP']; ?>
+                    </table>
+            
+                    <?php echo $data['PAGINATION']; ?>
+				</div>
+				<div class="tab-pane" id="players">
+					<table class="table clans">
+                        <thead class="clans-header">
+                            <tr>
+                                <th>#</th>
+								<th><?php echo $this->lng_m['avatar']; ?></th>
+                                <th><?php echo $this->lng_m['nickname']; ?></th>
+								<th><?php echo $this->lng_m['kills']; ?></th>
+                                <th><?php echo $this->lng_m['deaths']; ?></th>
+                                <th><?php echo $this->lng_m['last_seen']; ?></th>
+                            </tr>
+                        </thead>       
+                        <?php echo $data['PLAYERS']; ?>
+                    </table>
+                    <?php echo $data['PAGINATION']; ?>
+				</div>		
+			</div>
+		</div>
+	</div>
+</div>
