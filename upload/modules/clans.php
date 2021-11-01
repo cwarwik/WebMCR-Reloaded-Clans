@@ -27,7 +27,7 @@ class module{
 		$start = $this->core->pagination($this->cfg_m['PAGINATION'], 0, 0);
         $end = $this->cfg_m['PAGINATION'];
 
-		$query = $this->db->query("SELECT *, COUNT(*) AS tagcount FROM `{$this->cfg_m['MOD_SETTING']['TABLE_CLANS']}` LEFT JOIN `{$this->cfg_m['MOD_SETTING']['TABLE_PLAYERS']}` ON {$this->cfg_m['MOD_SETTING']['TABLE_CLANS']}.tag = {$this->cfg_m['MOD_SETTING']['TABLE_PLAYERS']}.tag LIMIT $start, $end");
+		$query = $this->db->query("SELECT *, COUNT(*) AS tagcount, {$this->cfg_m['MOD_SETTING']['TABLE_CLANS']}.name AS nclans FROM `{$this->cfg_m['MOD_SETTING']['TABLE_CLANS']}` LEFT JOIN `{$this->cfg_m['MOD_SETTING']['TABLE_PLAYERS']}` ON {$this->cfg_m['MOD_SETTING']['TABLE_CLANS']}.tag = {$this->cfg_m['MOD_SETTING']['TABLE_PLAYERS']}.tag LIMIT $start, $end");
 
 		if (!$query || $this->db->num_rows($query)<=0) {
 			echo $this->core->sp(MCR_THEME_MOD."clans/clans-none.html");
@@ -38,7 +38,7 @@ class module{
 			$data = array(
 				'ID' => intval($ar['id']),
 				'TAG' => $this->db->HSC($ar['tag']),
-				'NAME' => $this->db->HSC($ar['name']),
+				'NAME' => $this->db->HSC($ar['nclans']),
 				'COUNT' => $this->db->HSC($ar['tagcount']),
 				'BALANCE' => $this->db->HSC($ar['balance']),
 			);
